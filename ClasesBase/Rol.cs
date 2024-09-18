@@ -7,5 +7,7 @@ namespace ClasesBase
 {
     public class Rol
     {
+        private int Rol_Codigo;
+        private int Rol_Descripcion;
     }
 }

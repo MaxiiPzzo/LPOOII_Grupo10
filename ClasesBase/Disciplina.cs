@@ -7,5 +7,8 @@ namespace ClasesBase
 {
     public class Disciplina
     {
+        private int Dis_ID;
+        private string Dis_Nombre;
+        private string Dis_Descripcion;
     }
 }

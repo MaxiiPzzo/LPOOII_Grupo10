@@ -7,5 +7,8 @@ namespace ClasesBase
 {
     public class Categoria
     {
+        private int Cat_ID;
+        private string Cat_Nombre;
+        private string Cat_Descripcion;
     }
 }
