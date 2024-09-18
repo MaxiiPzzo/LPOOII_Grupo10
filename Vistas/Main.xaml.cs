@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
+using ClasesBase;
+
 namespace Vistas
 {
     /// <summary>
@@ -19,9 +21,12 @@ namespace Vistas
     /// </summary>
     public partial class Main : Window
     {
-        public Main()
+        private Usuario usuarioLogueado;
+        public Main(Usuario user)
         {
             InitializeComponent();
+            usuarioLogueado = user;
+            //Para tener a disposicion los datos del usuaario, por ejemplo mostrar el username en alguna esquina y desloguearse
         }
     }
 }

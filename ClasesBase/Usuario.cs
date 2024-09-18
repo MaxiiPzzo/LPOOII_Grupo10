@@ -7,10 +7,10 @@ namespace ClasesBase
 {
     public class Usuario
     {
-        private int Usu_ID;
-        private string Usu_NombreUsuario;
-        private string Usu_Contraseña;
-        private string Usu_ApellidoNombre;
-        private int Rol_Codigo;
+        public int Usu_ID { get; set; }
+        public string Usu_NombreUsuario { get; set; }
+        public string Usu_Contraseña { get; set; }
+        public string Usu_ApellidoNombre { get; set; }
+        public int Rol_Codigo { get; set; }
     }
 }
