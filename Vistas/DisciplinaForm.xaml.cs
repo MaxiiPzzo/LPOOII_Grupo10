@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ClasesBase;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,16 @@ namespace Vistas
         public DisciplinaForm()
         {
             InitializeComponent();
+        }
+        private void btnGuardar_Click(object sender, RoutedEventArgs e)
+        {
+            Disciplina oDisciplina = new Disciplina
+            {
+                Dis_Nombre = txtDisNombre.Text,
+                Dis_Descripcion = txtDisDescripcion.Text
+            };
+
+            MessageBox.Show($"Disciplina: {oDisciplina.Dis_Nombre}");
         }
     }
 }
