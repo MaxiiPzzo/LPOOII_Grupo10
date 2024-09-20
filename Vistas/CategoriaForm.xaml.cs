@@ -23,5 +23,18 @@ namespace Vistas
         {
             InitializeComponent();
         }
+
+        private void btnConfirmar_Click(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtDescripcion.Text) || string.IsNullOrWhiteSpace(txtID.Text) || string.IsNullOrWhiteSpace(txtNombre.Text)) {
+
+                MessageBox.Show("Campos vacios. Debe completar todos los campos", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+            else
+            {
+
+                MessageBox.Show($"Categoria creada con exito\nID: {txtID.Text}\nNombre: {txtNombre.Text}\nDescripcion: {txtDescripcion.Text}", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+        }
     }
 }

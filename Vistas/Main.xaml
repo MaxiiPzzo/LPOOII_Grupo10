@@ -7,6 +7,16 @@
         mc:Ignorable="d"
         Title="Main" Height="450" Width="800">
     <Grid>
-        
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FF48A220"/>
+                <GradientStop Color="#FF0ED8D3" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Button x:Name="btnSistema" Content="Sistema" HorizontalAlignment="Left" Margin="156,125,0,0" VerticalAlignment="Top" Background="#FFEAA50E" Height="54" Width="178"/>
+        <Button x:Name="btnParticipante" Content="Participante" HorizontalAlignment="Left" Margin="156,245,0,0" VerticalAlignment="Top" Background="#FFEAA50E" Height="54" Width="178" Click="btnParticipante_Click"/>
+        <Button x:Name="btnCompetencia" Content="Categoria" HorizontalAlignment="Left" Margin="460,125,0,0" VerticalAlignment="Top" Background="#FFEAA50E" Height="54" Width="178" Click="btnCompetencia_Click"/>
+        <Button x:Name="btnEvento" Content="Disciplina" HorizontalAlignment="Left" Margin="460,245,0,0" VerticalAlignment="Top" Background="#FFEAA50E" Height="54" Width="178" Click="btnEvento_Click"/>
+
     </Grid>
 </Window>

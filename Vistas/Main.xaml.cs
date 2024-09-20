@@ -28,5 +28,26 @@ namespace Vistas
             usuarioLogueado = user;
             //Para tener a disposicion los datos del usuaario, por ejemplo mostrar el username en alguna esquina y desloguearse
         }
+
+        private void btnParticipante_Click(object sender, RoutedEventArgs e)
+        {
+            var atletaForm = new AtletaForm();
+            atletaForm.Show();
+            this.Close();
+        }
+
+        private void btnCompetencia_Click(object sender, RoutedEventArgs e)
+        {
+            var categoriaForm = new CategoriaForm();
+            categoriaForm.Show();
+            this.Close();
+        }
+
+        private void btnEvento_Click(object sender, RoutedEventArgs e)
+        {
+            var disciplinaForm = new DisciplinaForm();
+            disciplinaForm.Show();
+            this.Close();
+        }
     }
 }
