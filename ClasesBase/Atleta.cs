@@ -7,17 +7,17 @@ namespace ClasesBase
 {
     public class Atleta
     {
-        private int Alt_ID;
-        private string Alt_DNI;
-        private string Alt_Apellido;
-        private string Alt_Nombre;
-        private string Alt_Nacionalidad;
-        private string Alt_Entrenador;
-        private string Alt_Genero;
-        private double Alt_Altura;
-        private double Alt_Peso;
-        private DateTime Alt_FechaNac;
-        private string Alt_Direccion;
-        private string Alt_Email;
+        public int Alt_ID;
+        public string Alt_DNI;
+        public string Alt_Apellido;
+        public string Alt_Nombre;
+        public string Alt_Nacionalidad;
+        public string Alt_Entrenador;
+        public string Alt_Genero;
+        public double Alt_Altura;
+        public double Alt_Peso;
+        public DateTime Alt_FechaNac;
+        public string Alt_Direccion;
+        public string Alt_Email;
     }
 }

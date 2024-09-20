@@ -7,6 +7,48 @@
         mc:Ignorable="d"
         Title="AtletaForm" Height="450" Width="800">
     <Grid>
+        <StackPanel Margin="10">
+
+            <TextBlock Text="Nombre:" Margin="0,10,0,5"/>
+            <TextBox Name="txtNombre" Width="200"/>
+
+            <TextBlock Text="Apellido:" Margin="0,10,0,5"/>
+            <TextBox Name="txtApellido" Width="200"/>
+
+            <TextBlock Text="DNI:" Margin="0,10,0,5"/>
+            <TextBox Name="txtDNI" Width="200"/>
+
+            <TextBlock Text="Nacionalidad:" Margin="0,10,0,5"/>
+            <TextBox Name="txtNacionalidad" Width="200"/>
+
+            <TextBlock Text="Entrenador:" Margin="0,10,0,5"/>
+            <TextBox Name="txtEntrenador" Width="200"/>
+
+            <TextBlock Text="Género:" Margin="0,10,0,5"/>
+            <ComboBox Name="cbGenero" Width="200">
+                <ComboBoxItem Content="Masculino"/>
+                <ComboBoxItem Content="Femenino"/>
+                <ComboBoxItem Content="Otro"/>
+            </ComboBox>
+
+            <TextBlock Text="Altura (m):" Margin="0,10,0,5"/>
+            <TextBox Name="txtAltura" Width="200"/>
+
+            <TextBlock Text="Peso (kg):" Margin="0,10,0,5"/>
+            <TextBox Name="txtPeso" Width="200"/>
+
+            <TextBlock Text="Fecha de Nacimiento:" Margin="0,10,0,5"/>
+            <DatePicker Name="dpFechaNac" Width="200"/>
+
+            <TextBlock Text="Dirección:" Margin="0,10,0,5"/>
+            <TextBox Name="txtDireccion" Width="200"/>
+
+            <TextBlock Text="Email:" Margin="0,10,0,5"/>
+            <TextBox Name="txtEmail" Width="200"/>
+
+            <Button Content="Guardar Atleta" Click="GuardarAtleta_Click" Width="200" Margin="0,20,0,0" HorizontalAlignment="Center"/>
+
+        </StackPanel>
         
     </Grid>
 </Window>
