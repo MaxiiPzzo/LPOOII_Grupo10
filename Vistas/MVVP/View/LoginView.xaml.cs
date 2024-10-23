@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ClasesBase;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,23 +11,20 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-using ClasesBase;
-
-namespace Vistas
+namespace Vistas.MVVP.View
 {
-    /// <summary>
-    /// Lógica de interacción para MainWindow.xaml
-    /// </summary>
-    public partial class MainWindow : Window
+    // NOTA: Considerar implementar toda la lógica en el ViewModel, utilizando el patrón MVVM
+    public partial class LoginView : Window
     {
-         List<Usuario> usuarios;
-
-        public MainWindow()
+        //TEMP
+        private List<Usuario> usuarios;
+        public LoginView()
         {
             InitializeComponent();
+
+            //TEMP
             usuarios = new List<Usuario>{
                 new Usuario { Usu_ID = 1, Usu_NombreUsuario = "admin", Usu_Contraseña = "111", Rol_Codigo = 1 },
                 new Usuario { Usu_ID = 2, Usu_NombreUsuario = "operador", Usu_Contraseña = "222", Rol_Codigo = 2 },
@@ -34,43 +32,49 @@ namespace Vistas
             };
         }
 
-        private void btnLogin_Click(object sender, RoutedEventArgs e)
+        private void OnLoginButtonClick(object sender, RoutedEventArgs e)
         {
-            var username = txtUsername.Text;
-            var pwd = txtPassword.Password;
-            
-            if(validarCampos(username, pwd))
+            var username = txtLoginUsername.Text;
+            var password = pasLoginPassword.Password;
+
+            if (validarCampos(username, password))
             {
 
-                var usuarioEncontrado = verificarCredenciales(username, pwd);
+                var usuarioEncontrado = verificarCredenciales(username, password);
                 if (usuarioEncontrado == null)
                 {
-                    MessageBox.Show("Usuario o Contraseña incorrecta.","Error de Login", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    MessageBox.Show("Usuario o Contraseña incorrecta.", "Error de Login", MessageBoxButton.OK, MessageBoxImage.Warning);
                     limpiarCampos();
                 }
                 else
                 {
-                    var mainPrincipal = new Main(usuarioEncontrado);
+                    var mainPrincipal = new MainLayout();
                     mainPrincipal.Show();
                     this.Close();
                 }
             }
+
+            Console.WriteLine("Botón presionado desde la ventana Login: " + username + "," + password);
+
         }
-        private void limpiarCampos()
-        {
-            txtUsername.Text = string.Empty;
-            txtPassword.Password = string.Empty;
-         }
+
         private bool validarCampos(string username, string pwd)
         {
             if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(pwd))
             {
-                MessageBox.Show("Los campos son obligatorios, no pueden estar vacios.","ERROR",MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Los campos son obligatorios, no pueden estar vacios.", "ERROR", MessageBoxButton.OK, MessageBoxImage.Error);
                 limpiarCampos();
                 return false;
             }
             return true;
         }
+
+        private void limpiarCampos()
+        {
+            txtLoginUsername.Text = string.Empty;
+            pasLoginPassword.Password = string.Empty;
+        }
+
         private Usuario verificarCredenciales(string usuario, string contraseña)
         {
             //foreach(Usuario user in usuarios)
@@ -80,7 +84,7 @@ namespace Vistas
             //}
             //return null;
 
-            return usuarios.FirstOrDefault(u=>u.Usu_NombreUsuario== usuario && u.Usu_Contraseña==contraseña);
+            return usuarios.FirstOrDefault(u => u.Usu_NombreUsuario == usuario && u.Usu_Contraseña == contraseña);
         }
     }
 }

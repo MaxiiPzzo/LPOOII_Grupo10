@@ -1,0 +1,88 @@
+﻿<UserControl
+    x:Class="Vistas.MVVP.View.CategoriaFormView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:UC="clr-namespace:Vistas.Templates"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Vistas.MVVP.View"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="505"
+    d:DesignWidth="680"
+    Background="{StaticResource LightSurface}"
+    mc:Ignorable="d">
+
+    <Grid Margin="16,0,24,16">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <TextBlock
+            Grid.Row="0"
+            Margin="0,0,0,16"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Bottom"
+            Style="{StaticResource TitleFont}"
+            Text="Registrar Categoría" />
+
+        <Grid Grid.Row="1" Grid.ColumnSpan="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+
+            <UC:FormTextboxUC
+                x:Name="txtNombre"
+                Grid.Row="0"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                Margin="0,8,8,8"
+                Caption="Nombre"
+                Hint="Ingrese el nombre de la categoría" />
+            <UC:FormLongTextboxUC
+                x:Name="txtDescripcion"
+                Grid.Row="1"
+                Grid.Column="0"
+                Grid.ColumnSpan="3"
+                Margin="0,8,8,8"
+                Caption="Descripción"
+                Hint="Describa brevemente la categoría" />
+
+
+
+
+        </Grid>
+
+
+        <StackPanel
+            Grid.Row="1"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Bottom"
+            Orientation="Horizontal">
+            <Button
+                Margin="0,0,16,0"
+                HorizontalAlignment="Right"
+                Content="CANCELAR"
+                Template="{StaticResource secondaryButtonTemplate}" />
+            <Button
+                HorizontalAlignment="Right"
+                Click="btnConfirmar_Click"
+                Content="REGISTRAR"
+                Template="{StaticResource primaryButtonTemplate}" />
+        </StackPanel>
+
+    </Grid>
+</UserControl>

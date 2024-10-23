@@ -1,0 +1,156 @@
+﻿<UserControl
+    x:Class="Vistas.MVVP.View.AtletaFormView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+    xmlns:UC="clr-namespace:Vistas.Templates"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Vistas.MVVP.View"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="505"
+    d:DesignWidth="680"
+    Background="{StaticResource LightSurface}"
+    mc:Ignorable="d">
+    <!--  TODO: Implementar mejores controles de usuarios para campos más especificos  -->
+    <Grid Margin="16,0,24,16">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <TextBlock
+            Grid.Row="0"
+            Margin="0,0,0,16"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Bottom"
+            Style="{StaticResource TitleFont}"
+            Text="Registrar nuevo Atleta" />
+
+        <Grid Grid.Row="1" Grid.ColumnSpan="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+
+            <UC:FormTextboxUC
+                x:Name="txtDni"
+                Grid.Row="0"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                Margin="0,8,8,8"
+                Caption="DNI"
+                Hint="Ingrese núm. de documento del atleta" />
+            <UC:FormTextboxUC
+                x:Name="txtNombre"
+                Grid.Row="1"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                Margin="0,8,8,8"
+                Caption="Nombre"
+                Hint="Ingrese nombre(s) del atleta" />
+            <UC:FormTextboxUC
+                x:Name="txtApellido"
+                Grid.Row="1"
+                Grid.Column="2"
+                Grid.ColumnSpan="2"
+                Margin="8,8,0,8"
+                Caption="Apellido"
+                Hint="Ingrese apellido(s) del atleta" />
+            <UC:FormTextboxUC
+                x:Name="txtNacionalidad"
+                Grid.Row="2"
+                Grid.Column="0"
+                Grid.ColumnSpan="1"
+                Margin="0,8,8,8"
+                Caption="Nacionalidad"
+                Hint="ej. Argentino" />
+            <UC:FormTextboxUC
+                x:Name="txtEntrenador"
+                Grid.Row="2"
+                Grid.Column="1"
+                Grid.ColumnSpan="3"
+                Margin="8,8,0,8"
+                Caption="Entrenador"
+                Hint="Ingrese apellido(s) y nombre completo del entrenador" />
+            <UC:AtletaFormGenderCheckboxUC
+                x:Name="rdGenero"
+                Grid.Row="3"
+                Grid.Column="0"
+                Margin="0,8,8,8" />
+            <UC:FormTextboxUC
+                x:Name="txtAltura"
+                Grid.Row="3"
+                Grid.Column="1"
+                Margin="8"
+                Caption="Altura (cm)"
+                Hint="ej. 175" />
+            <UC:FormTextboxUC
+                x:Name="txtPeso"
+                Grid.Row="3"
+                Grid.Column="2"
+                Margin="8"
+                Caption="Peso (kg)"
+                Hint="ej. 65.7" />
+            <UC:FormTextboxUC
+                x:Name="txtFechaNacimiento"
+                Grid.Row="3"
+                Grid.Column="3"
+                Margin="8,8,0,8"
+                Caption="Fecha Nacimiento"
+                Hint="dd/mm/aaaa" />
+            <UC:FormTextboxUC
+                x:Name="txtDireccion"
+                Grid.Row="5"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                Margin="0,8,8,8"
+                Caption="Dirección"
+                Hint="ej. S. S. de Jujuy, Barrio San Pedrito 475" />
+            <UC:FormTextboxUC
+                x:Name="txtEmail"
+                Grid.Row="5"
+                Grid.Column="2"
+                Grid.ColumnSpan="2"
+                Margin="8,8,0,8"
+                Caption="Email"
+                Hint="nombre@dominio.com" />
+
+
+
+        </Grid>
+
+
+        <StackPanel
+            Grid.Row="1"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Bottom"
+            Orientation="Horizontal">
+            <Button
+                Margin="0,0,16,0"
+                HorizontalAlignment="Right"
+                Style="{StaticResource secondaryButton}">
+                <TextBlock VerticalAlignment="Center" Text="CANCELAR" />
+            </Button>
+            <Button
+                HorizontalAlignment="Right"
+                Click="btnConfirmarAtleta_Click"
+                Style="{StaticResource primaryButton}">
+                <TextBlock VerticalAlignment="Center" Text="REGISTRAR" />
+            </Button>
+        </StackPanel>
+
+    </Grid>
+</UserControl>

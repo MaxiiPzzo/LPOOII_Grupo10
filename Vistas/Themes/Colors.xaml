@@ -1,0 +1,36 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!--  Colores de Botones y Controles  -->
+    <SolidColorBrush x:Key="PrimaryColor" Color="#4DBA2B" />
+    <SolidColorBrush x:Key="PrimaryColorHover" Color="#5BC63A" />
+    <SolidColorBrush x:Key="PrimaryColorClicked" Color="#6FD74E" />
+    <SolidColorBrush x:Key="PrimaryColorDisabled" Color="#9FDB91" />
+
+    <SolidColorBrush x:Key="SecondaryColor" Color="#1C1512" />
+    <SolidColorBrush x:Key="SecondaryColorHover" Color="#2A201D" />
+    <SolidColorBrush x:Key="SecondaryColorClicked" Color="#3A302C" />
+    <SolidColorBrush x:Key="SecondaryColorDisabled" Color="#675E5B" />
+
+    <SolidColorBrush x:Key="ErrorColor" Color="#FF3D1F" />
+    <SolidColorBrush x:Key="ErrorColorHover" Color="#FF5039" />
+    <SolidColorBrush x:Key="ErrorColorClicked" Color="#FF6A59" />
+    <SolidColorBrush x:Key="ErrorColorDisabled" Color="#FF9F8C" />
+
+
+
+    <!--  Colores de Fondo y Paneles  -->
+    <SolidColorBrush x:Key="Background" Color="#FFC680" />
+    <SolidColorBrush x:Key="LightSurface" Color="#FAFAFA" />
+    <SolidColorBrush x:Key="NeutralSurface" Color="#EB9B36" />
+    <SolidColorBrush x:Key="DarkSurface" Color="#543021" />
+
+    <!--  Colores Paneles Secundarios  -->
+    <SolidColorBrush x:Key="LightSecondary" Color="#D9D3C8" />
+    <SolidColorBrush x:Key="NeutralSecondary" Color="#EBAD60" />
+    <SolidColorBrush x:Key="DarkSecondary" Color="#66483C" />
+
+    <!--  Texto  -->
+    <SolidColorBrush x:Key="PrimaryText" Color="#1F0900" />
+    <SolidColorBrush x:Key="SecondaryText" Color="#AD796A" />
+    <SolidColorBrush x:Key="DarkText" Color="#FAFAFA" />
+
+</ResourceDictionary>
