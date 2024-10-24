@@ -52,6 +52,17 @@
                 Background="{StaticResource NeutralSurface}"
                 CornerRadius="0 70 0 10">
                 <StackPanel>
+
+                    <Button Command="{Binding Punto3ViewCommand}"  Style="{StaticResource sidebarButton}">
+                        <StackPanel Orientation="Horizontal">
+                            <Icon:PackIconMaterial
+                                Width="15"
+                                Height="15"
+                                Style="{StaticResource sidebarIcon}" />
+                            <TextBlock FontSize="14" Text="Punto 3" />
+                        </StackPanel>
+                    </Button>
+
                     <Button Command="{Binding HomeViewCommand}" Style="{StaticResource sidebarButton}">
                         <StackPanel Orientation="Horizontal">
                             <Icon:PackIconMaterial

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Vistas.MVVP.View;
 using Vistas.MVVP.ViewModel;
 
 namespace Vistas.MVVP.ViewModel
@@ -11,6 +12,8 @@ namespace Vistas.MVVP.ViewModel
     class MainViewModel : ObservableObject
     {
         public RelayCommand HomeViewCommand { get; set; }
+
+        public RelayCommand Punto3ViewCommand { get; set; }
         public RelayCommand AtletaPanelCommand { get; set; }
         public RelayCommand CategoriaPanelCommand { get; set; }
 
@@ -38,6 +41,7 @@ namespace Vistas.MVVP.ViewModel
         public MainViewModel()
         {
             HomeVM = new HomeViewModel();
+            var EstadodeCompetenciaVM = new EstadosDeCompetencias();
             UserPanelVM = new UserPanelViewModel();
             AtletaFormVM = new AtletaFormViewModel();
             AtletaPanelVM = new AtletaPanelViewModel();
@@ -45,6 +49,11 @@ namespace Vistas.MVVP.ViewModel
             DisciplinaFormVM = new DisciplinaFormViewModel();
             CurrentView = CategoriaFormVM;
 
+
+            Punto3ViewCommand = new RelayCommand(o =>
+            {
+                EstadodeCompetenciaVM.Show();
+            });
             HomeViewCommand = new RelayCommand(o =>
             {
                 CurrentView = HomeVM;
