@@ -37,8 +37,8 @@
                     <GridViewColumn Width="100" Header="Organizador" DisplayMemberBinding="{Binding Path=Com_Organizador}" />
                     <GridViewColumn Width="100" Header="Ubicación" DisplayMemberBinding="{Binding Path=Com_Ubicacion}" />
                     <GridViewColumn Width="100" Header="Sponsor" DisplayMemberBinding="{Binding Path=Com_Sponsors}" />
-                    <GridViewColumn Width="100" Header="Categoría" DisplayMemberBinding="{Binding Path=Cat_ID}" />
-                    <GridViewColumn Width="100" Header="Disciplina" DisplayMemberBinding="{Binding Path=Dis_ID}" />
+                    <GridViewColumn Width="100" Header="Categoría" DisplayMemberBinding="{Binding Path=Cat_Nombre}" />
+                    <GridViewColumn Width="100" Header="Disciplina" DisplayMemberBinding="{Binding Path=Dis_Nombre}" />
 
                 </GridView>
             </ListView.View>
