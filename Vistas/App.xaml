@@ -6,7 +6,7 @@
     xmlns:local="clr-namespace:Vistas"
     xmlns:view="clr-namespace:Vistas.MVVP.View"
     xmlns:viewModel="clr-namespace:Vistas.MVVP.ViewModel"
-    StartupUri="/MVVP/View/LoginView.xaml">
+    StartupUri="/MVVP/View/CompetenciasListView.xaml">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
