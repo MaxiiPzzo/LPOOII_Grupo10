@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<EstadosCompetencias>
+  <Estado>Programado</Estado>
+  <Estado>Postergado</Estado>
+  <Estado>Reprogramado</Estado>
+  <Estado>Cancelado</Estado>
+</EstadosCompetencias>
