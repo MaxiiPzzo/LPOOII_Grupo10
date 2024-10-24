@@ -18,7 +18,7 @@ namespace Vistas.MVVP.View
     /// <summary>
     /// Lógica de interacción para CompetenciasListView.xaml
     /// </summary>
-    public partial class CompetenciasListView : Window
+    public partial class CompetenciasListView : UserControl
     {
         public CompetenciasListView()
         {

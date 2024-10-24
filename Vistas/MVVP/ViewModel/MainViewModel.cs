@@ -14,10 +14,12 @@ namespace Vistas.MVVP.ViewModel
         public RelayCommand HomeViewCommand { get; set; }
 
         public RelayCommand Punto3ViewCommand { get; set; }
+        public RelayCommand CompetenciasListCommand { get; set; }
         public RelayCommand AtletaPanelCommand { get; set; }
         public RelayCommand CategoriaPanelCommand { get; set; }
 
         public RelayCommand DisciplinaPanelCommand { get; set; }
+
 
         public AtletaFormViewModel AtletaFormVM { get; set; }
         public HomeViewModel HomeVM { get; set; }
@@ -25,6 +27,8 @@ namespace Vistas.MVVP.ViewModel
         public UserPanelViewModel UserPanelVM { get; set;}
         public CategoriaFormViewModel CategoriaFormVM { get; set; }
         public DisciplinaFormViewModel DisciplinaFormVM { get; set; }
+
+        public CompetenciasListView CompetenciasListVM { get; set; }
 
         private object _currentView;
 
@@ -47,6 +51,9 @@ namespace Vistas.MVVP.ViewModel
             AtletaPanelVM = new AtletaPanelViewModel();
             CategoriaFormVM = new CategoriaFormViewModel();
             DisciplinaFormVM = new DisciplinaFormViewModel();
+
+            CompetenciasListVM = new CompetenciasListView();
+
             CurrentView = CategoriaFormVM;
 
 
@@ -72,6 +79,11 @@ namespace Vistas.MVVP.ViewModel
             DisciplinaPanelCommand = new RelayCommand(o =>
             {
                 CurrentView = DisciplinaFormVM;
+            });
+            CompetenciasListCommand = new RelayCommand(o =>
+            {
+                CurrentView = CompetenciasListVM;
+               
             });
         }
     }

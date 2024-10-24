@@ -93,7 +93,7 @@
                             <TextBlock FontSize="14" Text="Atletas" />
                         </StackPanel>
                     </Button>
-                    <Button Style="{StaticResource sidebarButton}">
+                    <Button Command="{Binding CompetenciasListCommand}" Style="{StaticResource sidebarButton}">
                         <StackPanel Orientation="Horizontal">
                             <Icon:PackIconMaterial
                                 Width="15"

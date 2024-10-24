@@ -13,9 +13,24 @@ namespace ClasesBase
         public static DataTable traerCompetencias()
         {
             SqlConnection conn = new SqlConnection(ClasesBase.Properties.Settings.Default.DefaultConnection);
+            DataTable dt = new DataTable();
             try
             {
                 conn.Open();
+            
+                 // SqlCommand cmd = new SqlCommand("ObtenerCompetencias", conn);
+                // cmd.CommandType = CommandType.StoredProcedure;
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandText = "SELECT * FROM Competencia";
+                cmd.CommandType = CommandType.Text;
+                cmd.Connection = conn;
+
+                
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dt);
+                return dt;
+
             }
             catch (SqlException sqlEx)
             {
@@ -28,22 +43,9 @@ namespace ClasesBase
                 // Manejo de otros errores
                 Console.WriteLine("ERROR: " + ex.Message);
             }
-
-
-
-            // SqlCommand cmd = new SqlCommand("ObtenerCompetencias", conn);
-            // cmd.CommandType = CommandType.StoredProcedure;
-
-            SqlCommand cmd = new SqlCommand();
-            cmd.CommandText = "SELECT * FROM Competencia";
-            cmd.CommandType = CommandType.Text;
-            cmd.Connection = conn;
-
-            DataTable dt = new DataTable();
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-            da.Fill(dt);
+            conn.Close();
             return dt;
-
+            
         }
     }
 }
