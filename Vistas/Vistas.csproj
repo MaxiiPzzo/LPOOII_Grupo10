@@ -66,6 +66,9 @@
     <Compile Include="MVVP\ViewModel\AtletaPanelViewModel.cs" />
     <Compile Include="MVVP\ViewModel\CategoriaFormViewModel.cs" />
     <Compile Include="MVVP\ViewModel\DisciplinaFormViewModel.cs" />
+    <Compile Include="MVVP\View\AtletaModificarView.xaml.cs">
+      <DependentUpon>AtletaModificarView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MVVP\View\CategoriaFormView.xaml.cs">
       <DependentUpon>CategoriaFormView.xaml</DependentUpon>
     </Compile>
@@ -119,6 +122,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MVVP\View\AtletaFormView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVP\View\AtletaModificarView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

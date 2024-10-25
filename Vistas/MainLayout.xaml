@@ -63,6 +63,17 @@
                         </StackPanel>
                     </Button>
 
+                    <Button Command="{Binding AtletaModificarV}"  Style="{StaticResource sidebarButton}">
+                        <StackPanel Orientation="Horizontal">
+                            <Icon:PackIconMaterial
+             Width="15"
+             Height="15"
+             Style="{StaticResource sidebarIcon}" />
+                            <TextBlock FontSize="14" Text="Modificar Atleta" />
+                        </StackPanel>
+                    </Button>
+
+
                     <Button Command="{Binding HomeViewCommand}" Style="{StaticResource sidebarButton}">
                         <StackPanel Orientation="Horizontal">
                             <Icon:PackIconMaterial

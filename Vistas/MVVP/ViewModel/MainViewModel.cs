@@ -20,7 +20,9 @@ namespace Vistas.MVVP.ViewModel
 
         public RelayCommand DisciplinaPanelCommand { get; set; }
 
+        public RelayCommand AtletaModificarV { get; set; }
 
+        public AtletaModificarView AtletaModificarVM { get; set; }
         public AtletaFormViewModel AtletaFormVM { get; set; }
         public HomeViewModel HomeVM { get; set; }
         public AtletaPanelViewModel AtletaPanelVM { get; set; } 
@@ -51,10 +53,15 @@ namespace Vistas.MVVP.ViewModel
             AtletaPanelVM = new AtletaPanelViewModel();
             CategoriaFormVM = new CategoriaFormViewModel();
             DisciplinaFormVM = new DisciplinaFormViewModel();
-
+            var AtletaModificarVM = new AtletaModificarView();
             CompetenciasListVM = new CompetenciasListView();
 
             CurrentView = CategoriaFormVM;
+
+            AtletaModificarV = new RelayCommand(o =>
+            {
+                AtletaModificarVM.Show();
+            });
 
 
             Punto3ViewCommand = new RelayCommand(o =>

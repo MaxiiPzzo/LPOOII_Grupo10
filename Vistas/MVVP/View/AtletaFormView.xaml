@@ -11,13 +11,19 @@
     d:DesignWidth="680"
     Background="{StaticResource LightSurface}"
     mc:Ignorable="d">
+    <UserControl.Resources>
+        <Style TargetType="UserControl" x:Key="ErrorTextBoxStyle">
+            <Setter Property="BorderBrush" Value="Red"/>
+            <Setter Property="BorderThickness" Value="2"/>
+        </Style>
+    </UserControl.Resources>
     <!--  TODO: Implementar mejores controles de usuarios para campos más especificos  -->
     <Grid Margin="16,0,24,16">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
             <RowDefinition />
         </Grid.RowDefinitions>
-
+    
         <TextBlock
             Grid.Row="0"
             Margin="0,0,0,16"

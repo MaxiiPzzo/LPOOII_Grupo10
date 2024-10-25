@@ -75,6 +75,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="Rol.cs" />
+    <Compile Include="TrabajarAtleta.cs" />
     <Compile Include="TrabajarCompetencia.cs" />
     <Compile Include="Usuario.cs" />
   </ItemGroup>

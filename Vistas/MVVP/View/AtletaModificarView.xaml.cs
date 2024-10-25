@@ -11,27 +11,46 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Vistas.MVVP.View
 {
     /// <summary>
-    /// Lógica de interacción para AtletaFormView.xaml
+    /// Lógica de interacción para AtletaModificarView.xaml
     /// </summary>
-    public partial class AtletaFormView : UserControl
+    public partial class AtletaModificarView : Window
     {
-        private Atleta oAtleta;
-        public AtletaFormView()
+        public AtletaModificarView()
         {
             InitializeComponent();
-            this.DataContext = new Atleta();
+        }
+
+        private void btnBuscarAtleta_Click(object sender, RoutedEventArgs e)
+        {
+            Atleta atletaEncontrado=TrabajarAtleta.TraerAtleta(int.Parse(txtBusqueda.Text));
+           
+            if (atletaEncontrado != null)
+            {
+                // Cargar los datos del atleta en los campos correspondientes
+                txtDni.Text = atletaEncontrado.Alt_DNI;
+                txtNombre.Text = atletaEncontrado.Alt_Nombre;
+                txtApellido.Text = atletaEncontrado.Alt_Apellido;
+                txtNacionalidad.Text = atletaEncontrado.Alt_Nacionalidad;
+                txtEntrenador.Text = atletaEncontrado.Alt_Entrenador;
+                txtAltura.Text = atletaEncontrado.Alt_Altura.ToString();
+                txtPeso.Text = atletaEncontrado.Alt_Peso.ToString();
+                txtFechaNacimiento.Text = atletaEncontrado.Alt_FechaNac.ToString("dd/MM/yyyy");
+                txtDireccion.Text = atletaEncontrado.Alt_Direccion;
+                txtEmail.Text = atletaEncontrado.Alt_Email;
+            }
+            else
+            {
+                MessageBox.Show("Atleta no encontrado.", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
         }
 
         private void btnConfirmarAtleta_Click(object sender, RoutedEventArgs e)
         {
-            //TODO: Mejorar lógica :/
-
             bool hasErrors = false;
 
             // Validar el campo DNI
@@ -168,7 +187,7 @@ namespace Vistas.MVVP.View
             string direccion = txtDireccion.Text;
             string email = txtEmail.Text;
 
-            
+
             if (string.IsNullOrWhiteSpace(dni) ||
                 string.IsNullOrWhiteSpace(nombre) ||
                 string.IsNullOrWhiteSpace(apellido) ||
@@ -184,9 +203,10 @@ namespace Vistas.MVVP.View
             }
             else
             {
-                
+
                 Atleta oAtleta = new Atleta
-                {
+                {   
+                    Alt_ID = int.Parse(txtBusqueda.Text),
                     Alt_DNI = dni,
                     Alt_Nombre = nombre,
                     Alt_Apellido = apellido,
@@ -200,9 +220,9 @@ namespace Vistas.MVVP.View
                     Alt_Email = email
                 };
 
-                TrabajarAtleta.AltaAtleta(oAtleta);
+                TrabajarAtleta.ModificarAtleta(oAtleta);
 
-                MessageBox.Show($"Atleta creado con éxito\n" +
+                MessageBox.Show($"Atleta modificado con éxito\n" +
                                 $"DNI: {oAtleta.Alt_DNI}\n" +
                                 $"Nombre: {oAtleta.Alt_Nombre} {oAtleta.Alt_Apellido}\n" +
                                 $"Nacionalidad: {oAtleta.Alt_Nacionalidad}\n" +
@@ -215,7 +235,7 @@ namespace Vistas.MVVP.View
                                 $"Email: {oAtleta.Alt_Email}",
                                 "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
 
-                
+
                 txtDni.Text = string.Empty;
                 txtNombre.Text = string.Empty;
                 txtApellido.Text = string.Empty;
@@ -228,6 +248,6 @@ namespace Vistas.MVVP.View
                 txtEmail.Text = string.Empty;
             }
         }
-
+    
     }
 }
