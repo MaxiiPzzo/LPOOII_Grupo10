@@ -21,8 +21,8 @@ namespace ClasesBase
 
                 using (SqlCommand cmd = connection.CreateCommand())
                 {
-                    cmd.CommandText = "SELECT * FROM [dbo].[Usuario]";
-                    cmd.CommandType = CommandType.Text;
+                    cmd.CommandText = "traerUsuarios";
+                    cmd.CommandType = CommandType.StoredProcedure;
 
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
