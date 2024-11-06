@@ -66,11 +66,20 @@
     <Compile Include="MVVP\ViewModel\AtletaPanelViewModel.cs" />
     <Compile Include="MVVP\ViewModel\CategoriaFormViewModel.cs" />
     <Compile Include="MVVP\ViewModel\DisciplinaFormViewModel.cs" />
+    <Compile Include="MVVP\View\AtletaModificarView.xaml.cs">
+      <DependentUpon>AtletaModificarView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MVVP\View\CategoriaFormView.xaml.cs">
       <DependentUpon>CategoriaFormView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MVVP\View\CompetenciasListView.xaml.cs">
+      <DependentUpon>CompetenciasListView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MVVP\View\DisciplinaFormView.xaml.cs">
       <DependentUpon>DisciplinaFormView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVP\View\EstadosDeCompetencias.xaml.cs">
+      <DependentUpon>EstadosDeCompetencias.xaml</DependentUpon>
     </Compile>
     <Compile Include="MVVP\View\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
@@ -116,6 +125,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="MVVP\View\AtletaModificarView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MVVP\View\AtletaPanelView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -124,7 +137,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="MVVP\View\CompetenciasListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MVVP\View\DisciplinaFormView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVP\View\EstadosDeCompetencias.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -261,6 +282,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Powerful-amico.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="MVVP\EstadosComp.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

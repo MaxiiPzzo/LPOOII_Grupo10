@@ -25,12 +25,129 @@ namespace Vistas.MVVP.View
         public AtletaFormView()
         {
             InitializeComponent();
-            oAtleta = new Atleta();
+            this.DataContext = new Atleta();
         }
 
         private void btnConfirmarAtleta_Click(object sender, RoutedEventArgs e)
         {
             //TODO: Mejorar lógica :/
+
+            bool hasErrors = false;
+
+            // Validar el campo DNI
+            if (string.IsNullOrWhiteSpace(txtDni.Text))
+            {
+                txtDni.Style = (Style)FindResource("ErrorTextBoxStyle");
+                hasErrors = true;
+            }
+            else
+            {
+                txtDni.Style = null; // Quitar el estilo de error si hay texto
+            }
+
+            // Validar el campo Nombre
+            if (string.IsNullOrWhiteSpace(txtNombre.Text))
+            {
+                txtNombre.Style = (Style)FindResource("ErrorTextBoxStyle");
+                hasErrors = true;
+            }
+            else
+            {
+                txtNombre.Style = null; // Quitar el estilo de error si hay texto
+            }
+
+            // Validar el campo Apellido
+            if (string.IsNullOrWhiteSpace(txtApellido.Text))
+            {
+                txtApellido.Style = (Style)FindResource("ErrorTextBoxStyle");
+                hasErrors = true;
+            }
+            else
+            {
+                txtApellido.Style = null; // Quitar el estilo de error si hay texto
+            }
+
+            // Validar el campo Nacionalidad
+            if (string.IsNullOrWhiteSpace(txtNacionalidad.Text))
+            {
+                txtNacionalidad.Style = (Style)FindResource("ErrorTextBoxStyle");
+                hasErrors = true;
+            }
+            else
+            {
+                txtNacionalidad.Style = null; // Quitar el estilo de error si hay texto
+            }
+
+            // Validar el campo Entrenador
+            if (string.IsNullOrWhiteSpace(txtEntrenador.Text))
+            {
+                txtEntrenador.Style = (Style)FindResource("ErrorTextBoxStyle");
+                hasErrors = true;
+            }
+            else
+            {
+                txtEntrenador.Style = null; // Quitar el estilo de error si hay texto
+            }
+
+            // Validar el campo Altura
+            if (string.IsNullOrWhiteSpace(txtAltura.Text))
+            {
+                txtAltura.Style = (Style)FindResource("ErrorTextBoxStyle");
+                hasErrors = true;
+            }
+            else
+            {
+                txtAltura.Style = null; // Quitar el estilo de error si hay texto
+            }
+
+            // Validar el campo Peso
+            if (string.IsNullOrWhiteSpace(txtPeso.Text))
+            {
+                txtPeso.Style = (Style)FindResource("ErrorTextBoxStyle");
+                hasErrors = true;
+            }
+            else
+            {
+                txtPeso.Style = null; // Quitar el estilo de error si hay texto
+            }
+
+            // Validar el campo Fecha de Nacimiento
+            if (string.IsNullOrWhiteSpace(txtFechaNacimiento.Text))
+            {
+                txtFechaNacimiento.Style = (Style)FindResource("ErrorTextBoxStyle");
+                hasErrors = true;
+            }
+            else
+            {
+                txtFechaNacimiento.Style = null; // Quitar el estilo de error si hay texto
+            }
+
+            // Validar el campo Dirección
+            if (string.IsNullOrWhiteSpace(txtDireccion.Text))
+            {
+                txtDireccion.Style = (Style)FindResource("ErrorTextBoxStyle");
+                hasErrors = true;
+            }
+            else
+            {
+                txtDireccion.Style = null; // Quitar el estilo de error si hay texto
+            }
+
+            // Validar el campo Email
+            if (string.IsNullOrWhiteSpace(txtEmail.Text))
+            {
+                txtEmail.Style = (Style)FindResource("ErrorTextBoxStyle");
+                hasErrors = true;
+            }
+            else
+            {
+                txtEmail.Style = null; // Quitar el estilo de error si hay texto
+            }
+
+            if (hasErrors)
+            {
+                MessageBox.Show("Por favor, completa todos los campos requeridos.", "Error de validación", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
 
             string dni = txtDni.Text;
             string nombre = txtNombre.Text;
@@ -82,6 +199,8 @@ namespace Vistas.MVVP.View
                     Alt_Direccion = direccion,
                     Alt_Email = email
                 };
+
+                TrabajarAtleta.AltaAtleta(oAtleta);
 
                 MessageBox.Show($"Atleta creado con éxito\n" +
                                 $"DNI: {oAtleta.Alt_DNI}\n" +
