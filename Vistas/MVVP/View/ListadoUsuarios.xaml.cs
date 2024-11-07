@@ -12,23 +12,16 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace Vistas
+namespace Vistas.MVVP.View
 {
     /// <summary>
-    /// Lógica de interacción para MainLayout.xaml
+    /// Lógica de interacción para ListadoUsuarios.xaml
     /// </summary>
-    public partial class MainLayout : Window
+    public partial class ListadoUsuarios : Window
     {
-        public MainLayout()
+        public ListadoUsuarios()
         {
             InitializeComponent();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            var ventanaUsuarios = new Vistas.MVVP.View.ABMUsuario();
-            // Mostrar la ventana
-            ventanaUsuarios.Show();
         }
     }
 }

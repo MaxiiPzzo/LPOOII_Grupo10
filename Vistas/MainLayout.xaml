@@ -63,6 +63,8 @@
                         </StackPanel>
                     </Button>
 
+                    <Button Content="Abrir ABMUsuarios" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Button_Click"/>
+
                     <Button Command="{Binding AtletaModificarV}"  Style="{StaticResource sidebarButton}">
                         <StackPanel Orientation="Horizontal">
                             <Icon:PackIconMaterial
