@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,34 +20,49 @@ namespace Vistas.MVVP.View
     /// <summary>
     /// Lógica de interacción para ABMUsuario.xaml
     /// </summary>
-    public partial class ABMUsuario : Window
+    public partial class ABMUsuario : Window, INotifyPropertyChanged
     {
+        private TrabajarUsuarios trabajarUsuarios;
+        private Usuario _usuarioActual;
+        public Usuario UsuarioActual {
+            get { return _usuarioActual; }
+            set { 
+            _usuarioActual = value;
+                OnPropertyChanged(nameof(UsuarioActual));
+            }
+        }
+        protected void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        private int indiceActual = 0;
+        ObservableCollection<Usuario> usuarios = new ObservableCollection<Usuario>();
         public ABMUsuario()
         {
             InitializeComponent();
-        }
-        private TrabajarUsuarios trabajarUsuarios;
-        public Usuario usuarioActual;
-        private int indiceActual = 0;
-        ObservableCollection<Usuario> usuarios = new ObservableCollection<Usuario>();
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-           trabajarUsuarios = new TrabajarUsuarios();
-           
+            trabajarUsuarios = new TrabajarUsuarios();
+
             usuarios = trabajarUsuarios.TraerUsuarios();
             if (usuarios.Count > 0)
             {
-                usuarioActual = usuarios[0]; // Inicializa con el primer usuario
+                UsuarioActual = usuarios[0]; // Inicializa con el primer usuario
             }
 
             DataContext = this;
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+          
         }
         private void SiguienteUsuario()
         {
             if (usuarios.Count > 0)
             {
                 indiceActual = (indiceActual + 1) % usuarios.Count;
-                usuarioActual = usuarios[indiceActual];
+                UsuarioActual = usuarios[indiceActual];
             }
         }
 
@@ -56,7 +72,7 @@ namespace Vistas.MVVP.View
             if (usuarios.Count > 0)
             {
                 indiceActual = (indiceActual - 1 + usuarios.Count) % usuarios.Count;
-                usuarioActual = usuarios[indiceActual];
+                UsuarioActual = usuarios[indiceActual];
             }
         }
 

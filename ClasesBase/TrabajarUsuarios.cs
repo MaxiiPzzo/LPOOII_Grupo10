@@ -36,7 +36,7 @@ namespace ClasesBase
                                 Usu_ApellidoNombre = reader.GetString(reader.GetOrdinal("Usu_ApellidoNombre")),
                                 Rol_Codigo = reader.GetInt32(reader.GetOrdinal("Rol_Codigo"))
                             };
-
+                            Console.WriteLine(usuario);
                             usuarios.Add(usuario);
                         }
                     }
