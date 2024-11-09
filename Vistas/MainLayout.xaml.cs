@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Namespace;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -30,5 +31,12 @@ namespace Vistas
             // Mostrar la ventana
             ventanaUsuarios.Show();
         }
+        private void UsuariosButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Crear y mostrar la ventana ListadoUsuarios
+            var listadoUsuariosWindow = new ListadoUsuarios();
+            listadoUsuariosWindow.Show();
+        }
+
     }
 }

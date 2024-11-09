@@ -86,17 +86,17 @@
                             <TextBlock FontSize="14" Text="Home" />
                         </StackPanel>
                     </Button>
-                    <Button Style="{StaticResource sidebarButton}">
-                        <StackPanel Orientation="Horizontal">
-                            <Icon:PackIconMaterial
-                                Width="15"
-                                Height="15"
-                                Kind="Account"
-                                Style="{StaticResource sidebarIcon}" />
-                            <TextBlock FontSize="14" Text="Usuarios" />
-                        </StackPanel>
-                    </Button>
-                    <Button Command="{Binding AtletaPanelCommand}" Style="{StaticResource sidebarButton}">
+					<Button Style="{StaticResource sidebarButton}" Click="UsuariosButton_Click">
+						<StackPanel Orientation="Horizontal">
+							<Icon:PackIconMaterial
+								Width="15"
+								Height="15"
+								Kind="Account"
+								Style="{StaticResource sidebarIcon}" />
+							<TextBlock FontSize="14" Text="Usuarios" />
+						</StackPanel>
+					</Button>
+					<Button Command="{Binding AtletaPanelCommand}" Style="{StaticResource sidebarButton}">
                         <StackPanel Orientation="Horizontal">
                             <Icon:PackIconMaterial
                                 Width="15"

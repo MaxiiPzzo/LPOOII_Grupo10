@@ -1,14 +1,16 @@
-﻿<Window x:Class="Vistas.MVVP.View.ListadoUsuarios"
+﻿<Window x:Class="Namespace.ListadoUsuarios"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Vistas.MVVP.View"
-        mc:Ignorable="d"
-        Title="ListadoUsuarios" Height="450" Width="800">
+        Title="Listado de Usuarios" Height="450" Width="800">
     <Grid>
-        <Grid x:Name="grdListado" Margin="88,138,88,137" Background="#FFFFF0F0" ShowGridLines="True"/>
-        <TextBox x:Name="txtBuscar" HorizontalAlignment="Left" Margin="533,93,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="143" BorderBrush="Black" Height="29"/>
-        <Button Content="Buscar" HorizontalAlignment="Left" Margin="692,98,0,0" VerticalAlignment="Top"/>
+        <DataGrid x:Name="UsuariosDataGrid" AutoGenerateColumns="False" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding Usu_ID}" />
+                <DataGridTextColumn Header="Nombre de Usuario" Binding="{Binding Usu_NombreUsuario}" />
+                <DataGridTextColumn Header="Contraseña" Binding="{Binding Usu_Contraseña}" />
+                <DataGridTextColumn Header="Apellido y Nombre" Binding="{Binding Usu_ApellidoNombre}" />
+                <DataGridTextColumn Header="Código de Rol" Binding="{Binding Rol_Codigo}" />
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Window>
