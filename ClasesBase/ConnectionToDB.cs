@@ -6,19 +6,17 @@ namespace ClasesBase
 {
     public abstract class ConnectionToDB
     {
-        private readonly SqlConnection _connectionString;
+        private readonly string _connectionString;
 
         public ConnectionToDB()
         {
-            string connectionString = ClasesBase.Properties.Settings.Default.DefaultConnection;
-
-            _connectionString = new SqlConnection(connectionString);
+            _connectionString = ClasesBase.Properties.Settings.Default.DefaultConnection;
 
         }
 
         protected SqlConnection getConnection()
         {
-            return _connectionString;
+            return new SqlConnection(_connectionString);
         }
     }
 }

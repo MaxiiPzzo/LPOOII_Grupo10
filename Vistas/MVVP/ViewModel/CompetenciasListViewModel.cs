@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 
 namespace Vistas.MVVP.ViewModel
 {
-    public class CategoriaFormViewModel
+    public class CompetenciasListViewModel
     {
+
     }
 }

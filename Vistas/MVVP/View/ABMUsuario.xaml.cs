@@ -36,20 +36,43 @@ namespace Vistas.MVVP.View
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        private int indiceActual = 0;
         ObservableCollection<Usuario> usuarios = new ObservableCollection<Usuario>();
         public ABMUsuario()
         {
+
             InitializeComponent();
             trabajarUsuarios = new TrabajarUsuarios();
 
-            usuarios = trabajarUsuarios.TraerUsuarios();
-            if (usuarios.Count > 0)
-            {
-                UsuarioActual = usuarios[0]; // Inicializa con el primer usuario
-            }
+            actualizarUsuarios();
 
+            UsuarioActual = new Usuario();
+            limpiarCampos();
+
+            grUsuarios.ItemsSource = usuarios;
             DataContext = this;
+            CargarRoles();
+        }
+
+        private void actualizarUsuarios()
+        {
+            var usuariosActualizados = trabajarUsuarios.TraerUsuarios();
+            usuarios.Clear();
+            foreach (var usuario in usuariosActualizados)
+            {
+                usuarios.Add(usuario);
+            }
+        }
+
+        private void CargarRoles()
+        {
+            cmbxRoles.Items.Add(new Rol { Rol_Codigo = 0, Rol_Descripcion = "Seleccionar Rol..." });
+            cmbxRoles.Items.Add(new Rol { Rol_Codigo = 1, Rol_Descripcion = "Administrador" });
+            cmbxRoles.Items.Add(new Rol { Rol_Codigo = 2, Rol_Descripcion = "Usuario" });
+            cmbxRoles.Items.Add(new Rol { Rol_Codigo = 3, Rol_Descripcion = "Supervisor" });
+            cmbxRoles.Items.Add(new Rol { Rol_Codigo = 4, Rol_Descripcion = "Invitado" });
+
+            cmbxRoles.DisplayMemberPath = "Rol_Descripcion";
+            cmbxRoles.SelectedValuePath = "Rol_Codigo";
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -59,24 +82,13 @@ namespace Vistas.MVVP.View
         }
         private void SiguienteUsuario()
         {
-            if (usuarios.Count > 0)
-            {
-                indiceActual = (indiceActual + 1) % usuarios.Count;
-                UsuarioActual = usuarios[indiceActual];
-            }
-        }
 
-        // Método para retroceder al usuario anterior
+        }
         private void AnteriorUsuario()
         {
-            if (usuarios.Count > 0)
-            {
-                indiceActual = (indiceActual - 1 + usuarios.Count) % usuarios.Count;
-                UsuarioActual = usuarios[indiceActual];
-            }
+
         }
 
-        // Llama a estos métodos en los eventos de los botones de navegación
         private void BtnSiguiente_Click(object sender, RoutedEventArgs e)
         {
             SiguienteUsuario();
@@ -85,6 +97,96 @@ namespace Vistas.MVVP.View
         private void BtnAnterior_Click(object sender, RoutedEventArgs e)
         {
             AnteriorUsuario();
+        }
+
+        private void btnNuevo_Click(object sender, RoutedEventArgs e)
+        {
+            if (isValido())
+            {
+                trabajarUsuarios.InsertarUsuario(UsuarioActual.Usu_NombreUsuario, UsuarioActual.Usu_Contraseña, UsuarioActual.Usu_ApellidoNombre, UsuarioActual.Rol_Codigo);
+                MessageBox.Show("Usuario creado con éxito!.", "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
+                limpiarCampos();
+                actualizarUsuarios();
+            }
+            else
+            {
+                MessageBox.Show("Campos vacíos o datos inválidos. Debe completar todos los campos correctamente.", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+        }
+
+        private void limpiarCampos()
+        {
+            UsuarioActual.Usu_ApellidoNombre = string.Empty;
+            UsuarioActual.Usu_Contraseña = string.Empty;
+            UsuarioActual.Usu_NombreUsuario = string.Empty;
+            UsuarioActual.Rol_Codigo = 0;
+
+            grUsuarios.SelectedItem = null;
+        }
+
+        private bool isValido()
+        {
+            return !UsuarioActual.Usu_ApellidoNombre.Equals(string.Empty)
+                && !UsuarioActual.Usu_Contraseña.Equals(string.Empty)
+                && !UsuarioActual.Usu_NombreUsuario.Equals(string.Empty)
+                && UsuarioActual.Rol_Codigo != 0;
+        }
+
+        private void btnCancelar_Click(object sender, RoutedEventArgs e)
+        {
+            limpiarCampos();
+        }
+
+        private void grUsuarios_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (grUsuarios.SelectedItem != null)
+            {
+                Usuario seleccionado = grUsuarios.SelectedItem as Usuario;
+
+                UsuarioActual = new Usuario
+                {
+                    Usu_ID = seleccionado.Usu_ID,
+                    Usu_NombreUsuario = seleccionado.Usu_NombreUsuario,
+                    Usu_Contraseña = seleccionado.Usu_Contraseña,
+                    Usu_ApellidoNombre = seleccionado.Usu_ApellidoNombre,
+                    Rol_Codigo = seleccionado.Rol_Codigo
+                };
+            }
+        }
+
+        private void btnEliminar_Click(object sender, RoutedEventArgs e)
+        {
+            if (grUsuarios.SelectedItem != null)
+            {
+                trabajarUsuarios.EliminarUsuario(UsuarioActual.Usu_ID);
+                MessageBox.Show("Usuario borrado con éxito!.", "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
+                actualizarUsuarios();
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar un usuario para proceder con la operación.", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+        }
+
+        private void btnGuardar_Click(object sender, RoutedEventArgs e)
+        {
+            if (grUsuarios.SelectedItem != null)
+            {
+                if (isValido())
+                {
+                    trabajarUsuarios.ActualizarUsuario(UsuarioActual.Usu_ID, UsuarioActual.Usu_NombreUsuario, UsuarioActual.Usu_Contraseña, UsuarioActual.Usu_ApellidoNombre, UsuarioActual.Rol_Codigo);
+                    MessageBox.Show("Usuario actualizado con éxito!.", "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
+                    actualizarUsuarios();
+                }
+                else
+                {
+                    MessageBox.Show("Campos vacíos o datos inválidos. Debe completar todos los campos correctamente.", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar un usuario para proceder con la operación.", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
         }
     }
 }

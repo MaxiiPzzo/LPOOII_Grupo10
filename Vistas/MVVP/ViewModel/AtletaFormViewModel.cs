@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Vistas.MVVP.ViewModel
 {
-    class AtletaFormViewModel
+    public class AtletaFormViewModel
     {
     }
 }

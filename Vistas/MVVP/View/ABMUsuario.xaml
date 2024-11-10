@@ -1,26 +1,190 @@
-﻿<Window x:Class="Vistas.MVVP.View.ABMUsuario"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Vistas.MVVP.View"
-        mc:Ignorable="d"
-        Title="ABMUsuario" Height="450" Width="800" Loaded="Window_Loaded">
+﻿<Window
+    x:Class="Vistas.MVVP.View.ABMUsuario"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Vistas.MVVP.View"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:svc="clr-namespace:ClasesBase;assembly=ClasesBase"
+    Title="ABMUsuario"
+    Width="800"
+    Height="450"
+    Loaded="Window_Loaded"
+    mc:Ignorable="d">
+    <Window.Resources>
+        <ObjectDataProvider
+            x:Key="listado_usuarios"
+            MethodName="traerUsuarios"
+            ObjectType="{x:Type svc:TrabajarUsuarios}" />
+    </Window.Resources>
     <Grid>
-        <Button x:Name="btnNuevo" Content="Nuevo" HorizontalAlignment="Left" Margin="37,44,0,0" VerticalAlignment="Top" Height="31" Width="109"/>
-        <Button x:Name="btnFinal" Content="&gt;|" HorizontalAlignment="Left" Margin="736,44,0,0" VerticalAlignment="Top" Height="32" Width="52"/>
-        <Label x:Name="lblApellido" Content="Apellido y Nombre" HorizontalAlignment="Left" Margin="144,137,0,0" VerticalAlignment="Top" Height="36" Width="176" FontSize="20"/>
-        <TextBox x:Name="txtApellido" Text="{Binding UsuarioActual.Usu_ApellidoNombre, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="380,146,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="155" Height="27" BorderBrush="#FF080808"/>
-        <Button x:Name="btnEliminar" Content="Eliminar" HorizontalAlignment="Left" Margin="162,44,0,0" VerticalAlignment="Top" Height="31" Width="111"/>
-        <Button x:Name="btnCancelar" Content="Cancelar" HorizontalAlignment="Left" Margin="294,43,0,0" VerticalAlignment="Top" Height="32" Width="111"/>
-        <Button x:Name="btnGuardar" Content="Guardar" HorizontalAlignment="Left" Margin="424,43,0,0" VerticalAlignment="Top" Height="32" Width="111"/>
-        <Button x:Name="btnSiguiente" Content="&gt;" HorizontalAlignment="Left" Margin="679,44,0,0" VerticalAlignment="Top" Height="32" Width="52" Click="BtnSiguiente_Click"/>
-        <Button x:Name="btnAnterior" Content="&lt;" HorizontalAlignment="Left" Margin="621,44,0,0" VerticalAlignment="Top" Height="32" Width="52" Click="BtnAnterior_Click"/>
-        <Button x:Name="btnInicio" Content="|&lt;" HorizontalAlignment="Left" Margin="564,44,0,0" VerticalAlignment="Top" Height="32" Width="52"/>
-        <Label x:Name="lblUsername" Content="Username" HorizontalAlignment="Left" Margin="218,194,0,0" VerticalAlignment="Top" Height="36" Width="102" FontSize="20"/>
-        <Label x:Name="lblPassword" Content="Password" HorizontalAlignment="Left" Margin="218,250,0,0" VerticalAlignment="Top" Height="36" Width="102" FontSize="20"/>
-        <TextBox x:Name="txtUsername" Text="{Binding UsuarioActual.Usu_NombreUsuario, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="380,202,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="155" Height="28" BorderBrush="#FF080808"/>
-        <TextBox x:Name="txtPassword" Text="{Binding UsuarioActual.Usu_Contraseña, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="380,260,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="155" Height="26" BorderBrush="#FF080808"/>
+        <Button
+            x:Name="btnNuevo"
+            Width="109"
+            Height="31"
+            Margin="37,44,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Click="btnNuevo_Click"
+            Content="Nuevo" />
+        <Button
+            x:Name="btnFinal"
+            Width="52"
+            Height="32"
+            Margin="736,44,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="&gt;|" />
+        <Label
+            x:Name="lblApellido"
+            Width="176"
+            Height="36"
+            Margin="37,119,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Apellido y Nombre"
+            FontSize="20" />
+        <TextBox
+            x:Name="txtApellido"
+            Width="155"
+            Height="27"
+            Margin="218,128,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            BorderBrush="#FF080808"
+            Text="{Binding UsuarioActual.Usu_ApellidoNombre, UpdateSourceTrigger=PropertyChanged}"
+            TextWrapping="Wrap" />
+        <Button
+            x:Name="btnEliminar"
+            Width="111"
+            Height="31"
+            Margin="162,44,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Click="btnEliminar_Click"
+            Content="Eliminar" />
+        <Button
+            x:Name="btnCancelar"
+            Width="111"
+            Height="32"
+            Margin="294,43,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Click="btnCancelar_Click"
+            Content="Cancelar" />
+        <Button
+            x:Name="btnGuardar"
+            Width="111"
+            Height="32"
+            Margin="424,43,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Click="btnGuardar_Click"
+            Content="Guardar" />
+        <Button
+            x:Name="btnSiguiente"
+            Width="52"
+            Height="32"
+            Margin="679,44,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Click="BtnSiguiente_Click"
+            Content="&gt;" />
+        <Button
+            x:Name="btnAnterior"
+            Width="52"
+            Height="32"
+            Margin="621,44,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Click="BtnAnterior_Click"
+            Content="&lt;" />
+        <Button
+            x:Name="btnInicio"
+            Width="52"
+            Height="32"
+            Margin="564,44,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="|&lt;" />
+        <Label
+            x:Name="lblUsername"
+            Width="102"
+            Height="36"
+            Margin="111,162,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Username"
+            FontSize="20" />
+        <Label
+            x:Name="lblPassword"
+            Width="102"
+            Height="36"
+            Margin="111,0,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Content="Password"
+            FontSize="20" />
+        <TextBox
+            x:Name="txtUsername"
+            Width="155"
+            Height="28"
+            Margin="218,166,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            BorderBrush="#FF080808"
+            Text="{Binding UsuarioActual.Usu_NombreUsuario, UpdateSourceTrigger=PropertyChanged}"
+            TextWrapping="Wrap" />
+        <TextBox
+            x:Name="txtPassword"
+            Width="155"
+            Height="26"
+            Margin="218,0,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            BorderBrush="#FF080808"
+            Text="{Binding UsuarioActual.Usu_Contraseña, UpdateSourceTrigger=PropertyChanged}"
+            TextWrapping="Wrap" />
+        <ListView
+            Name="grUsuarios"
+            Margin="564,119,10,109"
+            d:ItemsSource="{Binding usuarios}"
+            RenderTransformOrigin="0.5,0.5"
+            SelectionChanged="grUsuarios_SelectionChanged">
+            <ListView.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform />
+                    <SkewTransform AngleX="0.256" />
+                    <RotateTransform />
+                    <TranslateTransform X="0.621" />
+                </TransformGroup>
+            </ListView.RenderTransform>
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn
+                        Width="140"
+                        DisplayMemberBinding="{Binding Path=Usu_NombreUsuario}"
+                        Header="Username" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Label
+            x:Name="lblRoles"
+            Width="39"
+            Height="36"
+            Margin="162,240,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Rol"
+            FontSize="20"
+            RenderTransformOrigin="0.411,0.529" />
+        <ComboBox
+            x:Name="cmbxRoles"
+            Width="120"
+            Margin="218,247,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            SelectedIndex="{Binding UsuarioActual.Rol_Codigo, UpdateSourceTrigger=PropertyChanged}" />
 
     </Grid>
 </Window>

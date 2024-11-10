@@ -9,7 +9,7 @@ using Vistas.MVVP.ViewModel;
 
 namespace Vistas.MVVP.ViewModel
 {
-    class MainViewModel : ObservableObject
+    public class MainViewModel : ObservableObject
     {
         public RelayCommand HomeViewCommand { get; set; }
 

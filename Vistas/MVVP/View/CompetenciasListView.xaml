@@ -1,44 +1,100 @@
-﻿<UserControl x:Class="Vistas.MVVP.View.CompetenciasListView"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Vistas.MVVP.View"
-        
-        xmlns:svc="clr-namespace:ClasesBase;assembly=ClasesBase"
-        
-        mc:Ignorable="d"
-        >
+﻿<UserControl
+    x:Class="Vistas.MVVP.View.CompetenciasListView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Vistas.MVVP.View"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:svc="clr-namespace:ClasesBase;assembly=ClasesBase"
+    d:DesignHeight="505"
+    d:DesignWidth="680"
+    Background="{StaticResource LightSurface}"
+    mc:Ignorable="d">
     <UserControl.Resources>
         <ObjectDataProvider
-           ObjectType="{x:Type svc:TrabajarCompetencia}"
-           MethodName="traerCompetencias"
             x:Key="listado_competencias"
-        />
+            MethodName="traerCompetencias"
+            ObjectType="{x:Type svc:TrabajarCompetencia}" />
     </UserControl.Resources>
-    <Grid>
+    <Grid Margin="16,0,24,16">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
         <TextBlock
-            Text="Lista de Competencias"
-            FontSize="20"
-            FontWeight="Bold"
-            HorizontalAlignment="Center"
-            Margin="0,10,0,10" />
+            Grid.Row="0"
+            Margin="16,0,0,16"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Bottom"
+            Style="{StaticResource TitleFont}"
+            Text="Competencias" />
+        <Button
+            Margin="0,0,16,0"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Center"
+            Style="{StaticResource primaryButton}">
+            <StackPanel Orientation="Horizontal">
+                <Icon:PackIconMaterial
+                    Width="11"
+                    VerticalAlignment="Center"
+                    Kind="Plus"
+                    Style="{StaticResource iconButton}" />
+                <TextBlock VerticalAlignment="Center" Text="REGISTRAR" />
+            </StackPanel>
+        </Button>
 
-        <ListView Name="grCompetencias" Margin="48,57,23,89" 
-                  ItemsSource="{Binding Source={StaticResource listado_competencias}}">
+        <ListView
+            Name="grCompetencias"
+            Grid.Row="1"
+            Margin="48,57,23,89"
+            ItemsSource="{Binding Source={StaticResource listado_competencias}}">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Width="30" Header="Id" DisplayMemberBinding="{Binding Path=Com_ID}" />
-                    <GridViewColumn Width="100" Header="Nombre" DisplayMemberBinding="{Binding Path=Com_Nombre}" />
-                    <GridViewColumn Width="140" Header="Descripción" DisplayMemberBinding="{Binding Path=Com_Descripcion}" />
-                    <GridViewColumn Width="80" Header="Fecha Inicio" DisplayMemberBinding="{Binding Path=Com_FechaInicio}" />
-                    <GridViewColumn Width="80" Header="Fecha Fin" DisplayMemberBinding="{Binding Path=Com_FechaFin}" />
-                    <GridViewColumn Width="50" Header="Estado" DisplayMemberBinding="{Binding Path=Com_Estado}" />
-                    <GridViewColumn Width="100" Header="Organizador" DisplayMemberBinding="{Binding Path=Com_Organizador}" />
-                    <GridViewColumn Width="100" Header="Ubicación" DisplayMemberBinding="{Binding Path=Com_Ubicacion}" />
-                    <GridViewColumn Width="100" Header="Sponsor" DisplayMemberBinding="{Binding Path=Com_Sponsors}" />
-                    <GridViewColumn Width="100" Header="Categoría" DisplayMemberBinding="{Binding Path=Cat_Nombre}" />
-                    <GridViewColumn Width="100" Header="Disciplina" DisplayMemberBinding="{Binding Path=Dis_Nombre}" />
+                    <GridViewColumn
+                        Width="30"
+                        DisplayMemberBinding="{Binding Path=Com_ID}"
+                        Header="ID" />
+                    <GridViewColumn
+                        Width="100"
+                        DisplayMemberBinding="{Binding Path=Com_Nombre}"
+                        Header="Nombre" />
+                    <GridViewColumn
+                        Width="140"
+                        DisplayMemberBinding="{Binding Path=Com_Descripcion}"
+                        Header="Descripción" />
+                    <GridViewColumn
+                        Width="80"
+                        DisplayMemberBinding="{Binding Path=Com_FechaInicio}"
+                        Header="Fecha Inicio" />
+                    <GridViewColumn
+                        Width="80"
+                        DisplayMemberBinding="{Binding Path=Com_FechaFin}"
+                        Header="Fecha Fin" />
+                    <GridViewColumn
+                        Width="50"
+                        DisplayMemberBinding="{Binding Path=Com_Estado}"
+                        Header="Estado" />
+                    <GridViewColumn
+                        Width="100"
+                        DisplayMemberBinding="{Binding Path=Com_Organizador}"
+                        Header="Organizador" />
+                    <GridViewColumn
+                        Width="100"
+                        DisplayMemberBinding="{Binding Path=Com_Ubicacion}"
+                        Header="Ubicación" />
+                    <GridViewColumn
+                        Width="100"
+                        DisplayMemberBinding="{Binding Path=Com_Sponsors}"
+                        Header="Sponsor" />
+                    <GridViewColumn
+                        Width="100"
+                        DisplayMemberBinding="{Binding Path=Cat_Nombre}"
+                        Header="Categoría" />
+                    <GridViewColumn
+                        Width="100"
+                        DisplayMemberBinding="{Binding Path=Dis_Nombre}"
+                        Header="Disciplina" />
 
                 </GridView>
             </ListView.View>
