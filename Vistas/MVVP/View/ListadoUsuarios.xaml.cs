@@ -29,5 +29,18 @@ namespace Namespace // Cambia "Namespace" por el namespace correcto de tu proyec
             // Enlaza la colección Usuarios a la grilla de la interfaz
             UsuariosDataGrid.ItemsSource = Usuarios;
         }
+
+        private void userSearchTextBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+            string username = userSearchTextBox.Text.Trim();
+            TrabajarUsuarios trabajarUsuarios = new TrabajarUsuarios();
+
+            Usuarios = trabajarUsuarios.TraerUsuariosByNombreUsuario(username);
+
+            UsuariosDataGrid.ItemsSource = Usuarios;
+
+
+        }
+
     }
 }

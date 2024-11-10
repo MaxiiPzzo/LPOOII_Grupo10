@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Listado de Usuarios" Height="450" Width="800">
     <Grid>
-        <DataGrid x:Name="UsuariosDataGrid" AutoGenerateColumns="False" IsReadOnly="True">
+        <DataGrid x:Name="UsuariosDataGrid" AutoGenerateColumns="False" IsReadOnly="True" Margin="0,0,283,0">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding Usu_ID}" />
                 <DataGridTextColumn Header="Nombre de Usuario" Binding="{Binding Usu_NombreUsuario}" />
@@ -12,5 +12,7 @@
                 <DataGridTextColumn Header="Código de Rol" Binding="{Binding Rol_Codigo}" />
             </DataGrid.Columns>
         </DataGrid>
+        <TextBox x:Name="userSearchTextBox" HorizontalAlignment="Left" Margin="557,64,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="204" Height="23" TextChanged="userSearchTextBox_TextChanged"/>
+        <Label Content="Buscar por Usuario:" HorizontalAlignment="Left" Margin="557,31,0,0" VerticalAlignment="Top" Width="204" Height="28"/>
     </Grid>
 </Window>
