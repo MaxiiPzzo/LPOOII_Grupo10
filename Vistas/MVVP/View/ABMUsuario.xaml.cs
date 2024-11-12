@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using ClasesBase;
+using Namespace;
 
 namespace Vistas.MVVP.View
 {
@@ -24,6 +25,8 @@ namespace Vistas.MVVP.View
     {
         private TrabajarUsuarios trabajarUsuarios;
         private Usuario _usuarioActual;
+        
+
         public Usuario UsuarioActual {
             get { return _usuarioActual; }
             set { 
@@ -36,6 +39,8 @@ namespace Vistas.MVVP.View
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
+
+        CollectionView Vista;
         ObservableCollection<Usuario> usuarios = new ObservableCollection<Usuario>();
         public ABMUsuario()
         {
@@ -48,6 +53,7 @@ namespace Vistas.MVVP.View
             UsuarioActual = new Usuario();
             limpiarCampos();
 
+            //CARGA DE USUARIOS
             grUsuarios.ItemsSource = usuarios;
             DataContext = this;
             CargarRoles();
@@ -78,26 +84,28 @@ namespace Vistas.MVVP.View
         public event PropertyChangedEventHandler PropertyChanged;
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-          
-        }
-        private void SiguienteUsuario()
-        {
+                        Vista = (CollectionView)CollectionViewSource.GetDefaultView(usuarios);
+            
+            if (Vista == null)
+            {
+                
+                     MessageBox.Show("Error al configurar la vista de usuarios.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
 
+            Vista.CurrentChanged += (s, ev) =>
+            {
+                UsuarioActual = Vista.CurrentItem as Usuario;
+                // Actualiza la selección en el ListView
+                grUsuarios.SelectedItem = Vista.CurrentItem;
+                grUsuarios.ScrollIntoView(Vista.CurrentItem);
+            };
+            // Configurar el usuario inicial si hay datos
+            if (usuarios.Count > 0)
+            {
+                Vista.MoveCurrentToFirst();
+            }
         }
-        private void AnteriorUsuario()
-        {
 
-        }
-
-        private void BtnSiguiente_Click(object sender, RoutedEventArgs e)
-        {
-            SiguienteUsuario();
-        }
-
-        private void BtnAnterior_Click(object sender, RoutedEventArgs e)
-        {
-            AnteriorUsuario();
-        }
 
         private void btnNuevo_Click(object sender, RoutedEventArgs e)
         {
@@ -107,6 +115,9 @@ namespace Vistas.MVVP.View
                 MessageBox.Show("Usuario creado con éxito!.", "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
                 limpiarCampos();
                 actualizarUsuarios();
+
+
+                Vista.MoveCurrentToLast();
             }
             else
             {
@@ -141,6 +152,9 @@ namespace Vistas.MVVP.View
         {
             if (grUsuarios.SelectedItem != null)
             {
+
+                Vista.MoveCurrentTo(grUsuarios.SelectedItem);
+                /*
                 Usuario seleccionado = grUsuarios.SelectedItem as Usuario;
 
                 UsuarioActual = new Usuario
@@ -150,7 +164,7 @@ namespace Vistas.MVVP.View
                     Usu_Contraseña = seleccionado.Usu_Contraseña,
                     Usu_ApellidoNombre = seleccionado.Usu_ApellidoNombre,
                     Rol_Codigo = seleccionado.Rol_Codigo
-                };
+                };*/
             }
         }
 
@@ -187,6 +201,34 @@ namespace Vistas.MVVP.View
             {
                 MessageBox.Show("Debe seleccionar un usuario para proceder con la operación.", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
+        }
+
+        private void btnInicio_Click(object sender, RoutedEventArgs e)
+        {
+            Vista.MoveCurrentToFirst();
+        }
+
+        private void BtnSiguiente_Click(object sender, RoutedEventArgs e)
+        {
+            Vista.MoveCurrentToNext();
+            if (Vista.IsCurrentAfterLast)
+            {
+                Vista.MoveCurrentToFirst();
+            }
+        }
+
+        private void BtnAnterior_Click(object sender, RoutedEventArgs e)
+        {
+            Vista.MoveCurrentToPrevious();
+            if (Vista.IsCurrentBeforeFirst)
+            {
+                Vista.MoveCurrentToLast();
+            }
+        }
+
+        private void btnFinal_Click(object sender, RoutedEventArgs e)
+        {
+            Vista.MoveCurrentToLast();
         }
     }
 }

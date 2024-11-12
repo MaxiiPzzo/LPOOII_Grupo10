@@ -34,7 +34,7 @@
             Margin="736,44,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Content="&gt;|" />
+            Content="&gt;|" Click="btnFinal_Click" />
         <Label
             x:Name="lblApellido"
             Width="176"
@@ -106,7 +106,7 @@
             Margin="564,44,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Content="|&lt;" />
+            Content="|&lt;" Click="btnInicio_Click" />
         <Label
             x:Name="lblUsername"
             Width="102"
@@ -145,10 +145,14 @@
             BorderBrush="#FF080808"
             Text="{Binding UsuarioActual.Usu_Contraseña, UpdateSourceTrigger=PropertyChanged}"
             TextWrapping="Wrap" />
+        
+          
+            
         <ListView
             Name="grUsuarios"
-            Margin="564,119,10,109"
-            d:ItemsSource="{Binding usuarios}"
+            Margin="426,119,10,109"
+            DataContext="{Binding Source={StaticResource ResourceKey=listado_usuarios}}"
+    
             RenderTransformOrigin="0.5,0.5"
             SelectionChanged="grUsuarios_SelectionChanged">
             <ListView.RenderTransform>
@@ -161,10 +165,23 @@
             </ListView.RenderTransform>
             <ListView.View>
                 <GridView>
-                    <GridViewColumn
-                        Width="140"
-                        DisplayMemberBinding="{Binding Path=Usu_NombreUsuario}"
+                    
+                    <GridViewColumn 
+                        Width="120" 
+                        DisplayMemberBinding="{Binding Path=Usu_ApellidoNombre}" 
+                        Header="Apellido, Nombre" />
+                    <GridViewColumn 
+                        Width="80" 
+                        DisplayMemberBinding="{Binding Path=Usu_NombreUsuario}" 
                         Header="Username" />
+                    <GridViewColumn 
+                        Width="80"
+                        DisplayMemberBinding="{Binding Path=Usu_Contraseña}" 
+                        Header="Password" />
+                    <GridViewColumn 
+                        Width="30"
+                        DisplayMemberBinding="{Binding Path=Rol_Codigo}" 
+                        Header="Rol" />        
                 </GridView>
             </ListView.View>
         </ListView>
