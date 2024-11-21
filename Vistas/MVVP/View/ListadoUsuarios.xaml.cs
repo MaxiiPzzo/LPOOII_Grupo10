@@ -42,5 +42,18 @@ namespace Namespace // Cambia "Namespace" por el namespace correcto de tu proyec
 
         }
 
+        private void btnVistaPrevia_Click(object sender, RoutedEventArgs e)
+        {
+            // Crear una instancia de la ventana de Vista Previa
+            VistaPreviaImpresion vistaPrevia = new VistaPreviaImpresion();
+
+            // Pasar la colección actual de usuarios (ObservableCollection<Usuario>)
+            vistaPrevia.CargarDatos(Usuarios);
+
+            // Mostrar la ventana
+            vistaPrevia.ShowDialog();
+        }
+
+
     }
 }

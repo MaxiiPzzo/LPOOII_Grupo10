@@ -91,6 +91,9 @@
       <DependentUpon>LoginView.xaml</DependentUpon>
     </Compile>
     <Compile Include="MVVP\ViewModel\LoginViewModel.cs" />
+    <Compile Include="MVVP\View\VistaPreviaImpresion.xaml.cs">
+      <DependentUpon>VistaPreviaImpresion.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Templates\AtletaFormGenderCheckboxUC.xaml.cs">
       <DependentUpon>AtletaFormGenderCheckboxUC.xaml</DependentUpon>
     </Compile>
@@ -172,6 +175,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MVVP\View\UserPanelView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVP\View\VistaPreviaImpresion.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

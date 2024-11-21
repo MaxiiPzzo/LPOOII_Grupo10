@@ -12,6 +12,7 @@
                 <DataGridTextColumn Header="Código de Rol" Binding="{Binding Rol_Codigo}" />
             </DataGrid.Columns>
         </DataGrid>
+        <Button x:Name="btnVistaPrevia" Content="Vista Previa" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10,10,0,0" Click="btnVistaPrevia_Click" />
         <TextBox x:Name="userSearchTextBox" HorizontalAlignment="Left" Margin="557,64,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="204" Height="23" TextChanged="userSearchTextBox_TextChanged"/>
         <Label Content="Buscar por Usuario:" HorizontalAlignment="Left" Margin="557,31,0,0" VerticalAlignment="Top" Width="204" Height="28"/>
     </Grid>
