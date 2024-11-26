@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Windows;
 using ClasesBase; // Asegúrate de que este namespace está presente
+using Vistas.MVVP.View;
 
 namespace Namespace // Cambia "Namespace" por el namespace correcto de tu proyecto
 {
